@@ -32,6 +32,18 @@ public class UserService {
 
     }
 
+    public User update(Long id, User obj){
+        User entity = userRepository.getOne(id); // deixa o objeto monitorado para que possa fazer a operação
+        updateData(entity, obj);
+        return userRepository.save(entity);
+
+    }
+
+    private void updateData(User entity, User obj) {
+        entity.setName(obj.getName());
+        entity.setEmail(obj.getEmail());
+        entity.setPhone(obj.getPhone());
+    }
 
 
 }
